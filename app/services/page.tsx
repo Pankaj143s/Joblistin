@@ -97,7 +97,7 @@ export default function ServicesPage() {
             className="object-cover object-center brightness-75 blur-sm"
             priority
           />
-          <div className="absolute inset-0 bg-black/60" />
+          <div className="absolute inset-0 bg-black/40" />
         </div>
 
         {/* Hero content */}

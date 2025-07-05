@@ -140,7 +140,7 @@ export default function ContactPage() {
             className="object-cover object-center brightness-75 blur-sm"
             priority
           />
-          <div className="absolute inset-0 bg-black/60" />
+          <div className="absolute inset-0 bg-black/40" />
         </div>
         <div className="container mx-auto px-4 relative z-10 flex flex-col justify-center h-full text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Contact Us</h1>

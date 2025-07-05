@@ -40,7 +40,7 @@ export default function AboutPage() {
             className="object-cover object-center filter brightness-75"
             priority
           />
-          <div className="absolute inset-0 bg-black/60" />
+          <div className="absolute inset-0 bg-black/40" />
         </div>
 
         {/* Hero content */}
