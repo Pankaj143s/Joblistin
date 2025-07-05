@@ -1,3 +1,6 @@
+"use client"
+
+import { useState } from "react"
 import {
   Card,
   CardContent,
@@ -21,6 +24,21 @@ import {
 import Image from "next/image"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
+
+/* ------------------------------------------------------------------ */
+/*  🔧  1)  PUT YOUR GOOGLE-FORM IDs & ACTION URL HERE                 */
+/* ------------------------------------------------------------------ */
+const GOOGLE_FORM_ACTION =
+  "https://docs.google.com/forms/u/0/d/e/1FAIpQLSc3UwLqneV_Ut9kVma2ySqH0eYKJvPLPENE-eyEpWRGNAWE5w/formResponse" // <-- replace
+
+const GOOGLE_FORM_ENTRIES = {
+  firstName: "entry.1308910398", // <-- replace
+  lastName: "entry.184276340",  // <-- replace
+  phone: "entry.1750671874",     // <-- replace
+  email: "entry.233167334",     // <-- replace
+  message: "entry.115745265",   // <-- replace
+}
+/* ------------------------------------------------------------------ */
 
 export default function ContactPage() {
   const contactInfo = [
@@ -52,7 +70,10 @@ export default function ContactPage() {
     {
       icon: Clock,
       title: "Working Hours",
-      details: ["Monday - Friday: 9:00 AM - 6:00 PM", "Saturday: 10:00 AM - 4:00 PM"],
+      details: [
+        "Monday - Friday: 9:00 AM - 6:00 PM",
+        "Saturday: 10:00 AM - 4:00 PM",
+      ],
     },
   ]
 
@@ -73,11 +94,43 @@ export default function ContactPage() {
     },
   ]
 
+  /* ------------------- form status state ------------------- */
+  const [status, setStatus] = useState<"idle" | "loading" | "sent">("idle")
+
+  /* ------------------- submit handler ---------------------- */
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+    setStatus("loading")
+
+    const form = e.currentTarget
+    const data = new FormData()
+
+    data.append(GOOGLE_FORM_ENTRIES.firstName, form.firstName.value)
+    data.append(GOOGLE_FORM_ENTRIES.lastName, form.lastName.value)
+    data.append(GOOGLE_FORM_ENTRIES.phone, form.phone.value)
+    data.append(GOOGLE_FORM_ENTRIES.email, form.email.value)
+    data.append(GOOGLE_FORM_ENTRIES.message, form.message.value)
+
+    try {
+      await fetch(GOOGLE_FORM_ACTION, {
+        method: "POST",
+        mode: "no-cors",
+        body: data,
+      })
+      form.reset()
+      setStatus("sent")
+    } catch {
+      alert("There was a problem sending the form. Please try again.")
+      setStatus("idle")
+    }
+  }
+
+  /* --------------------------- JSX -------------------------- */
   return (
     <div className="min-h-screen bg-gray-50">
       <Header />
 
-      {/* Hero Banner with background image */}
+      {/* Hero Banner */}
       <section className="relative text-white h-[60vh]">
         <div className="absolute inset-0">
           <Image
@@ -92,7 +145,8 @@ export default function ContactPage() {
         <div className="container mx-auto px-4 relative z-10 flex flex-col justify-center h-full text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Contact Us</h1>
           <p className="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto">
-            It would be great to meet! Get in touch with our team of recruitment experts.
+            It would be great to meet! Get in touch with our team of recruitment
+            experts.
           </p>
         </div>
       </section>
@@ -101,7 +155,7 @@ export default function ContactPage() {
       <section className="py-16 lg:py-24">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12">
-            {/* Contact Form */}
+            {/* ------ Contact Form ------ */}
             <div>
               <Card className="border-0 shadow-lg rounded-xl">
                 <CardHeader className="pb-6">
@@ -113,59 +167,76 @@ export default function ContactPage() {
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <form className="space-y-6">
-                    <div className="grid md:grid-cols-2 gap-4">
+                  {status === "sent" ? (
+                    <p className="text-green-600 text-lg">
+                      ✅ Thank you! Your message has been sent.
+                    </p>
+                  ) : (
+                    <form className="space-y-6" onSubmit={handleSubmit}>
+                      <div className="grid md:grid-cols-2 gap-4">
+                        <div>
+                          <Label htmlFor="firstName">First Name</Label>
+                          <Input
+                            id="firstName"
+                            name="firstName"
+                            required
+                            placeholder="Enter your first name"
+                          />
+                        </div>
+                        <div>
+                          <Label htmlFor="lastName">Last Name</Label>
+                          <Input
+                            id="lastName"
+                            name="lastName"
+                            required
+                            placeholder="Enter your last name"
+                          />
+                        </div>
+                      </div>
                       <div>
-                        <Label htmlFor="firstName">First Name</Label>
+                        <Label htmlFor="phone">Phone Number</Label>
                         <Input
-                          id="firstName"
-                          placeholder="Enter your first name"
+                          id="phone"
+                          name="phone"
+                          type="tel"
+                          required
+                          placeholder="Enter your phone number"
                         />
                       </div>
                       <div>
-                        <Label htmlFor="lastName">Last Name</Label>
+                        <Label htmlFor="email">Email Address</Label>
                         <Input
-                          id="lastName"
-                          placeholder="Enter your last name"
+                          id="email"
+                          name="email"
+                          type="email"
+                          required
+                          placeholder="Enter your email"
                         />
                       </div>
-                    </div>
-                    <div>
-                      <Label htmlFor="phone">Phone Number</Label>
-                      <Input
-                        id="phone"
-                        type="tel"
-                        placeholder="Enter your phone number with area code"
-                      />
-                    </div>
-                    <div>
-                      <Label htmlFor="email">Email Address</Label>
-                      <Input
-                        id="email"
-                        type="email"
-                        placeholder="Enter your email"
-                      />
-                    </div>
-                    <div>
-                      <Label htmlFor="message">Message</Label>
-                      <Textarea
-                        id="message"
-                        placeholder="Tell us how we can help you..."
-                        rows={5}
-                      />
-                    </div>
-                    <Button
-                      type="submit"
-                      className="w-full bg-blue-600 hover:bg-blue-700 text-lg py-3"
-                    >
-                      Get in Touch
-                    </Button>
-                  </form>
+                      <div>
+                        <Label htmlFor="message">Message</Label>
+                        <Textarea
+                          id="message"
+                          name="message"
+                          required
+                          placeholder="Tell us how we can help you..."
+                          rows={5}
+                        />
+                      </div>
+                      <Button
+                        type="submit"
+                        disabled={status === "loading"}
+                        className="w-full bg-blue-600 hover:bg-blue-700 text-lg py-3"
+                      >
+                        {status === "loading" ? "Sending…" : "Get in Touch"}
+                      </Button>
+                    </form>
+                  )}
                 </CardContent>
               </Card>
             </div>
 
-            {/* Contact Information */}
+            {/* ------ Contact Information ------ */}
             <div className="space-y-8">
               <div>
                 <h2 className="text-2xl font-bold text-gray-900 mb-6">
@@ -201,6 +272,7 @@ export default function ContactPage() {
                   </Card>
                 ))}
               </div>
+
               {/* Social Links */}
               <div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-4">
