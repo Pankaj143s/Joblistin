@@ -152,11 +152,11 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Form and Info */}
-      <section className="py-16 lg:py-24">
+      <section className="py-16 lg:py-24 " id="contact-form">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12">
             {/* ------ Contact Form ------ */}
-            <div>
+            <div >
               <Card className="border-0 shadow-lg rounded-xl">
                 <CardHeader className="pb-6">
                   <CardTitle className="text-2xl text-gray-900">
@@ -172,7 +172,7 @@ export default function ContactPage() {
                       ✅ Thank you! Your message has been sent.
                     </p>
                   ) : (
-                    <form className="space-y-6" onSubmit={handleSubmit}>
+                    <form  className="space-y-6" onSubmit={handleSubmit}>
                       <div className="grid md:grid-cols-2 gap-4">
                         <div>
                           <Label htmlFor="firstName">First Name</Label>

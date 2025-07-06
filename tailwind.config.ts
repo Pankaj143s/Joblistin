@@ -28,6 +28,9 @@ const config: Config = {
 
     /* ───────────────────── Extensions ───────────────────── */
     extend: {
+      fontFamily: {
+        sans: ["var(--font-sans)", "sans-serif"],
+      },
       /* ―‖ CSS-Vars colors (unchanged) ―‖ */
       colors: {
         border:        "hsl(var(--border))",

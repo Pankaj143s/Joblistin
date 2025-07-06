@@ -23,7 +23,7 @@ export default function RootLayout({
   return (
     /* 4️⃣  Apply the Poppins class from next/font/google */
     <html lang="en" className={poppins.variable}>
-      <body className="font-sans">{children}</body>
+      <body >{children}</body>
     </html>
   )
 }

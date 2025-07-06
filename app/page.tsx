@@ -66,7 +66,8 @@ export default function HomePage() {
     {
       icon: Users,
       title: "Client-Centric",
-      description: "Tailored solutions crafted to each client’s specific goals.",
+      description:
+        "Tailored solutions crafted to each client’s specific goals.",
     },
   ];
 
@@ -138,13 +139,17 @@ export default function HomePage() {
               careers.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button
-                size="lg"
-                className="soft-hover  bg-blue-600 text-white hover:bg-blue-700 px-8 py-3"
-              >
-                Post a Job
-              </Button>
-              <Link href="/careers">
+              <Link href="/contact#contact-form">
+                {" "}
+                <Button
+                  size="lg"
+                  className="soft-hover bg-blue-600 text-white hover:bg-blue-700 px-8 py-3 "
+                >
+                  Contact Us
+                </Button>
+              </Link>
+
+              <Link href="/careers" >
                 <Button
                   size="lg"
                   variant="outline"
@@ -175,6 +180,7 @@ export default function HomePage() {
               <Card
                 key={s.title}
                 className="soft-hover text-center border-0 shadow-md rounded-xl"
+                
               >
                 <CardHeader className="pb-4">
                   <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -236,11 +242,17 @@ export default function HomePage() {
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {testimonials.map((t) => (
-              <Card key={t.name} className="soft-hover border-0 shadow-lg rounded-xl">
+              <Card
+                key={t.name}
+                className="soft-hover border-0 shadow-lg rounded-xl"
+              >
                 <CardContent className="p-8">
                   <div className="flex mb-4">
                     {Array.from({ length: t.rating }).map((_, i) => (
-                      <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
+                      <Star
+                        key={i}
+                        className="w-5 h-5 text-yellow-400 fill-current"
+                      />
                     ))}
                   </div>
                   <p className="text-gray-600 mb-6 italic">“{t.content}”</p>
@@ -285,7 +297,10 @@ export default function HomePage() {
                 </div>
               </div>
               <Link href="/contact">
-                <Button size="lg" className="soft-hover bg-blue-600 hover:bg-blue-700 px-8 py-3">
+                <Button
+                  size="lg"
+                  className="soft-hover bg-blue-600 hover:bg-blue-700 px-8 py-3"
+                >
                   Contact Us Today
                 </Button>
               </Link>
