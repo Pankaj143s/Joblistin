@@ -13,6 +13,9 @@ export const metadata: Metadata = {
   title: "Joblistin - Connecting Talent with Opportunity",
   description:
     "Joblistin is a professional recruitment consultancy firm specializing in permanent staffing, contract hiring, executive search, and HR consulting services.",
+     icons: {
+    icon: "/favicon.ico",
+  },
 }
 
 export default function RootLayout({
