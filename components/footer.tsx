@@ -8,8 +8,7 @@ export default function Footer() {
     { name: "Services", href: "/services" },
     { name: "Careers", href: "/careers" },
     { name: "Contact", href: "/contact" },
-    { name: "Privacy Policy", href: "/privacy" },
-    { name: "Terms of Service", href: "/terms" },
+   
   ]
 
   const services = [
@@ -116,7 +115,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-gray-800 mt-12 pt-8 text-center">
- <p className="text-gray-400">© 2024 Joblistin. All rights reserved.</p>        </div>
+ <p className="text-gray-400">© 2025 Joblistin. All rights reserved.</p>        </div>
       </div>
     </footer>
   )
