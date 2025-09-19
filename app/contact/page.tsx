@@ -47,9 +47,9 @@ export default function ContactPage() {
       title: "Head Office - Pune",
       details: [
         "Joblistin",
-        "Shewale Complex, A-4 First Floor,",
-        "Near Shahu Colony, Karve Nagar,",
-        "Pune – 411052",
+        "Puraniks Aldea Espanola, A-321,",
+        "Opposite Orchid Hotel, Baner",
+        "Pune – 411045",
       ],
     },
     {
@@ -57,9 +57,6 @@ export default function ContactPage() {
       title: "Phone Numbers",
       details: [
         "+91 9860608927",
-        "+91 9860608950",
-        "+91 9860608903",
-        "+91 9860608931",
       ],
     },
     {
@@ -72,7 +69,7 @@ export default function ContactPage() {
       title: "Working Hours",
       details: [
         "Monday - Friday: 9:00 AM - 6:00 PM",
-        "Saturday: 10:00 AM - 4:00 PM",
+        
       ],
     },
   ]
@@ -347,15 +344,15 @@ export default function ContactPage() {
             </p>
           </div>
           <div className="rounded-xl h-96 overflow-hidden">
-            <iframe
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              loading="lazy"
-              allowFullScreen
-              referrerPolicy="no-referrer-when-downgrade"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3783.753580873354!2d73.82532857509452!3d18.495347171098714!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2ea8e605a7e13%3A0xbecf9c2e579b4e0b!2sShewale%20Complex%2C%20Karve%20Nagar%2C%20Pune%2C%20Maharashtra%20411052%2C%20India!5e0!3m2!1sen!2sus!4v1698765432100!5m2!1sen!2sus"
-            ></iframe>
+           <iframe
+  width="100%"
+  height="100%"
+  style={{ border: 0 }}
+  loading="lazy"
+  allowFullScreen
+  referrerPolicy="no-referrer-when-downgrade"
+  src="https://www.google.com/maps?q=18.564616309090702,73.76814538867471&z=17&hl=en&output=embed"
+></iframe>
           </div>
         </div>
       </section>

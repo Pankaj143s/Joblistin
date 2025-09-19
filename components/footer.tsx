@@ -1,4 +1,5 @@
 import { Users, MapPin, Phone, Mail, Linkedin, Instagram, Facebook } from "lucide-react"
+import Image from "next/image"
 import Link from "next/link"
 
 export default function Footer() {
@@ -25,12 +26,16 @@ export default function Footer() {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div>
-            <Link href="/" className="flex items-center gap-2 mb-6">
-              <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
-                <Users className="w-6 h-6 text-white" />
-              </div>
-              <span className="text-xl font-bold">Joblistin</span>
-            </Link>
+           <Link href="/" className="flex items-center gap-2 mb-6">
+            <Image
+              src="/final-cropped-logo-noName.svg"
+              alt="Joblistin Logo"
+              width={90}
+              height={90}
+              className="object-contain"
+            />
+            <span className="text-2xl font-bold text-[#235EDF]">Joblistin</span>
+          </Link>
             <p className="text-gray-300 mb-6 leading-relaxed">
               Creating opportunities through high vision and wisdom. We focus on delivering quality recruitment services and building long-term relationships with our clients.
             </p>
@@ -94,8 +99,8 @@ export default function Footer() {
               <div className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-blue-400 mt-1 flex-shrink-0" />
                 <div>
-                  <p className="text-gray-300">Shewale Complex, A-4 First Floor</p>
-                  <p className="text-gray-300">Near Shahu Colony, Karve Nagar, Pune – 411052</p>
+                  <p className="text-gray-300">Puraniks Aldea Espanola, A-321,</p>
+                  <p className="text-gray-300">Opposite Orchid Hotel, Baner, Pune – 411045</p>
                 </div>
               </div>
               <div className="flex items-center gap-3">
